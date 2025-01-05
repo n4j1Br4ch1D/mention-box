@@ -9,16 +9,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(ApiEndpointsConstants.ITEMS_PATH)
 public class ItemController {
-//    @Autowired
-//    private ItemService itemService;
+    @Autowired
+    private ItemService itemService;
     @GetMapping("/findAll")
     Iterable<ItemEntity> findAll(){
-        return null; //itemService.getProducts();
-
+      return itemService.getItems();
     }
 
     @PostMapping("/insert")
     public ItemEntity insertProduct(@RequestBody ItemEntity itemEntity){
-        return null; //itemService.insertProduct(product);
+        return itemService.insertItems(itemEntity);
     }
 }

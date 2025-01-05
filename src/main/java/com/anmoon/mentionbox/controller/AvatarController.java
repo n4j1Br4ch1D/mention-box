@@ -28,19 +28,14 @@ public class AvatarController {
 
     @GetMapping("/{fullName}")
     public ResponseEntity<byte[]> getAvatar(@PathVariable String fullName) throws BusinessException {
-        String[] nameParts = fullName.split(" ");
+        String[] nameParts = fullName.split("-");
         byte[] avatarImage = avatarUtil.generateAvatar(nameParts[0], nameParts[1],500); // Adjust the size as needed
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_PNG);
-        throw new BusinessException(BusinessExceptionCodes.ARGUMENT_EXCEPTION_ERROR_CODE);
-//        mailSenderUtil.sendNewMail(JavaMailSender,"test@gmail.com", "Subject right here", "Body right there!");
-
-//        return new ResponseEntity<>(avatarImage, headers, HttpStatus.OK);
+        return new ResponseEntity<>(avatarImage, headers, HttpStatus.OK);
     }
 
-    @GetMapping("/test/users")
-    public String test(){
+// throw new BusinessException(BusinessExceptionCodes.ARGUMENT_EXCEPTION_ERROR_CODE);
+// mailSenderUtil.sendNewMail(JavaMailSender,"test@gmail.com", "Subject right here", "Body right there!");
 
-        return "test";
-    }
 }

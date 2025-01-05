@@ -10,7 +10,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+//@Data
 @Document(indexName = "subtitles")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SubtitleEntity extends BaseEntity{

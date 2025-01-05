@@ -57,4 +57,4 @@ seedable:
 #if already seeded it will not rerun.
 omdb:
   api:
-    key: 7bca981d
+    key: 25b402dc
