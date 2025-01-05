@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mentionbox?currentSchema=myschema1
+    username: postgres
+    password: toor
+    driverClassName: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      format_sql: true
+      show-sql: true
+      naming:
+       physical-strategy: com.anmoon.mentionbox.config.PrefixPhysicalNamingStrategy
+       prefix: mine_
+  data:
+    elasticsearch:
+      cluster-names: itemService
+      cluster-node: localhost:9200
+  security:
+    basic:
+      enabled: false
+  mail:
+    host: localhost
+    port: 1025
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: true
+
+seed:
+  database: true
+  method: new #add
+  items: users,admins,settings
+

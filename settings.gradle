@@ -1,1 +1,4 @@
 rootProject.name = 'mentionbox'
+//include 'mentionbox'
+//include 'seedable'
+

@@ -1,0 +1,60 @@
+spring:
+#  profiles:
+#    active: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mentionbox?currentSchema=myschema2
+    username: postgres
+    password: toor
+    driverClassName: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      format_sql: true
+      show-sql: true
+      naming:
+        physical-strategy: com.anmoon.mentionbox.config.PrefixPhysicalNamingStrategy
+        prefix: mine_
+  data:
+    elasticsearch:
+      cluster-names: AdminSeeder
+      cluster-node: localhost:9200
+  security:
+    basic:
+      enabled: false
+  mail:
+    host: localhost
+    port: 1025
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: true
+#logging:
+#    level:
+#       root: WARN
+#    file:
+#        name: myapp.log
+#        max-size: 10MB
+#        max-history: 10
+application:
+  security:
+    jwt:
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
+seedable:
+  enabled: true
+  method: new #add it will run a rollback first then.
+  type: initial #dummy #both
+  package: com.anmoon.mentionbox.seeder #deprecated
+#  items: AdminSeeder,UserSeeder,ClientSeeder,LikeSeeder,DomSeeder
+  items: UserSeeder #,UserSeeder1 #AdminSeeder,ClientSeeder,DomSeeder
+  #Not found @trnsactional
+  #chain also sql files //\  or have a method to callthem
+
+#if already seeded it will not rerun.
+omdb:
+  api:
+    key: 7bca981d

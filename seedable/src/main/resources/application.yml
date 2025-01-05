@@ -1,0 +1,6 @@
+seedable:
+  enabled: true
+  method: new #add it will run a rollback first then.
+  type: initial #dummy #all run or no run / if already run dont rerun
+  package: com.anmoon.mentionbox.seeder #deprecated
+  items: UserSeeder #,UserSeeder1 #AdminSeeder,ClientSeeder,DomSeeder
