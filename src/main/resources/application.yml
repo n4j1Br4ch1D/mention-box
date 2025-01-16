@@ -4,7 +4,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/mentionbox?currentSchema=myschema2
     username: postgres
-    password: toor
+    password: 2012
     driverClassName: org.postgresql.Driver
   jpa:
     hibernate:
@@ -16,7 +16,7 @@ spring:
         prefix: mine_
   data:
     elasticsearch:
-      cluster-names: AdminSeeder
+      cluster-names: elasticsearch
       cluster-node: localhost:9200
   security:
     basic:
@@ -50,7 +50,7 @@ seedable:
   type: initial #dummy #both
   package: com.anmoon.mentionbox.seeder #deprecated
 #  items: AdminSeeder,UserSeeder,ClientSeeder,LikeSeeder,DomSeeder
-  items: UserSeeder #,UserSeeder1 #AdminSeeder,ClientSeeder,DomSeeder
+  items: UserSeeder,ItemSeeder #,UserSeeder1 #AdminSeeder,ClientSeeder,DomSeeder
   #Not found @trnsactional
   #chain also sql files //\  or have a method to callthem
 

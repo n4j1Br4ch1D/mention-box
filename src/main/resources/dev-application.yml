@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/mentionbox?currentSchema=myschema1
     username: postgres
-    password: toor
+    password: 2012
     driverClassName: org.postgresql.Driver
   jpa:
     hibernate:

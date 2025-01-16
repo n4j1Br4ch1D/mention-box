@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.util.ArrayList;
@@ -16,10 +17,10 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Document(indexName = "items")
-//@Document(indexName="javatechie",type="customer",shards=2)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ItemEntity {
-    private Long id;
+    @Id
+    private String id;
     private String title;
     private String desc;
 
@@ -53,4 +54,6 @@ public class ItemEntity {
 //    private String website;
 
 //    private List<SubtitleEntity> subtitles;
+
+
 }

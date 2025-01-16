@@ -37,5 +37,6 @@ public class UserSeeder implements Seedable {
 
     @Override
     public void rollback() {
+
     }
 }
