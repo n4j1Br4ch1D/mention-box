@@ -4,6 +4,7 @@ import com.anmoon.mentionbox.entity.ItemEntity;
 import com.anmoon.mentionbox.provider.CustumerFaker;
 import com.anmoon.mentionbox.repository.ItemRepository;
 import com.anmoon.mentionbox.seedable.Seedable;
+import com.anmoon.mentionbox.service.EmbeddingService;
 import lombok.extern.slf4j.Slf4j;
 import net.datafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,13 @@ public class ItemSeeder implements Seedable {
 
     private final ItemRepository itemRepository;
 
+    private final EmbeddingService embeddingService;
+
     @Autowired
-    public ItemSeeder(ItemRepository itemRepository) {
+    public ItemSeeder(ItemRepository itemRepository,
+                      EmbeddingService embeddingService) {
         this.itemRepository = itemRepository;
+        this.embeddingService = embeddingService;
     }
 
     @Override
@@ -28,6 +33,7 @@ public class ItemSeeder implements Seedable {
             String type = custumerFaker.itemProvider().weightedItemName();
             itemEntity.setTitle(custumerFaker.itemProvider().title(type));
             itemEntity.setDesc(custumerFaker.itemProvider().description(type));
+            itemEntity.setEmbedding(embeddingService.getEmbedding(itemEntity.getDesc() + itemEntity.getTitle()));
             itemRepository.save(itemEntity);
             log.info(type + " " +itemEntity.toString());
         }

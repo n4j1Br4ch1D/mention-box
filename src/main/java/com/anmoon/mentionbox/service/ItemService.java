@@ -9,12 +9,18 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ItemService {
 
     @Autowired
     private ItemRepository itemRepository;
+
+    @Autowired
+    private EmbeddingService embeddingService;
+
+
 
     public Iterable<ItemResponse> getItems() {
         Iterable<ItemEntity> items = itemRepository.findAll();
@@ -27,6 +33,7 @@ public class ItemService {
     }
 
     public ItemEntity insertItems(ItemEntity item) {
+        item.setEmbedding(embeddingService.getEmbedding(item.getDesc() + item.getTitle()));
         return itemRepository.save(item);
     }
 
@@ -68,6 +75,22 @@ public class ItemService {
 
     public List<ItemResponse> getAllItems(String keyword, int page, int size) {
         Iterable<ItemEntity> iter = itemRepository.findAll();
+        List<ItemResponse> result = new ArrayList<>();
+        for (ItemEntity item : iter) {
+            result.add(ItemResponse.builder().title(item.getTitle()).description(item.getDesc()).nbr(0).build());
+        }
+        return new ArrayList<>(result);
+    }
+
+    public List<ItemResponse> semanticSearch(String request) {
+        List<Double> embedding = embeddingService.getEmbedding(request);
+
+        String embeddingString = embedding.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", "));
+
+        List<ItemEntity> iter = itemRepository.searchWithVector(embedding);
+
         List<ItemResponse> result = new ArrayList<>();
         for (ItemEntity item : iter) {
             result.add(ItemResponse.builder().title(item.getTitle()).description(item.getDesc()).nbr(0).build());

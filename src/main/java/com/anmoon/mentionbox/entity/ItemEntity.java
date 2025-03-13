@@ -16,13 +16,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Document(indexName = "items")
+@Document(indexName = "items_v3")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ItemEntity {
     @Id
     private String id;
     private String title;
     private String desc;
+    private List<Double> embedding;
 
 //    private String year;
 //    private String rated;

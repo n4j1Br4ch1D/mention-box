@@ -5,6 +5,7 @@ import com.anmoon.mentionbox.dto.request.ItemRequest;
 import com.anmoon.mentionbox.dto.response.ItemResponse;
 import com.anmoon.mentionbox.entity.ItemEntity;
 import com.anmoon.mentionbox.service.ItemService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,11 @@ import org.springframework.web.bind.annotation.*;
 public class ItemController {
     @Autowired
     private ItemService itemService;
+
+    @GetMapping("/searchSemantic")
+    Iterable<ItemResponse> findBySemanticSearch(@RequestParam String title){
+        return itemService.semanticSearch(title);
+    }
 
     @GetMapping("/findAll")
     Iterable<ItemResponse> findAll(){

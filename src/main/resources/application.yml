@@ -50,7 +50,7 @@ seedable:
   type: initial #dummy #both
   package: com.anmoon.mentionbox.seeder #deprecated
 #  items: AdminSeeder,UserSeeder,ClientSeeder,LikeSeeder,DomSeeder
-  items: UserSeeder,ItemSeeder #,UserSeeder1 #AdminSeeder,ClientSeeder,DomSeeder
+  items: UserSeeder #,UserSeeder1 #AdminSeeder,ClientSeeder,DomSeeder
   #Not found @trnsactional
   #chain also sql files //\  or have a method to callthem
 
