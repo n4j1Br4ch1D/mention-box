@@ -8,9 +8,18 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface ItemEntityMapper {
 
+//    ItemEntityMapper INSTANCE = Mappers.getMapper(ItemEntityMapper.class);
+//    ItemEntity mapToItemEntity(ItemResponse itemResponse);
+//
+//    ItemResponse mapToItemResponse(ItemEntity itemEntity);
+
+
     ItemEntityMapper INSTANCE = Mappers.getMapper(ItemEntityMapper.class);
+
+
     ItemEntity mapToItemEntity(ItemResponse itemResponse);
-    
+
+
     ItemResponse mapToItemResponse(ItemEntity itemEntity);
 
 

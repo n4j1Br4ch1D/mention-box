@@ -23,22 +23,22 @@ public class MovieController {
     private ItemService itemService;
 
 
-    @GetMapping("/details")
-    public ItemResponse getMovieDetails(@RequestParam String title) {
-        log.info("ddd =>{}", 2);
-        ItemResponse movieDetails = omdbService.getMovieDetails(title);
-       log.info("lololo=>{}", movieDetails.getActors());
-        ItemEntity item = ItemEntityMapper.INSTANCE.mapToItemEntity(movieDetails);
-        item.setId(Long.valueOf("1")); // Assuming you set the ID separately
-        itemService.insertItems(item);
-        ItemResponse respo = ItemEntityMapper.INSTANCE.mapToItemResponse(item);
-        return respo;
-    }
+//    @GetMapping("/details")
+//    public ItemResponse getMovieDetails(@RequestParam String title) {
+//        log.info("ddd =>{}", 2);
+//        ItemResponse movieDetails = omdbService.getMovieDetails(title);
+//       log.info("lololo=>{}", movieDetails.getActors());
+//        ItemEntity item = ItemEntityMapper.INSTANCE.mapToItemEntity(movieDetails);
+//        item.setId(Long.valueOf("1")); // Assuming you set the ID separately
+//        itemService.insertItems(item);
+//        ItemResponse respo = ItemEntityMapper.INSTANCE.mapToItemResponse(item);
+//        return respo;
+//    }
 
-    @GetMapping("/findAll")
-    Iterable<ItemEntity> findAll(){
-        return itemService.getItems();
-
-    }
+//    @GetMapping("/findAll")
+//    Iterable<ItemEntity> findAll(){
+//        return itemService.getItems();
+//
+//    }
 }
 

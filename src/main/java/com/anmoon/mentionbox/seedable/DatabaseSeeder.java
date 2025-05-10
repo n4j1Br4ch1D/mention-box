@@ -69,6 +69,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                 if (seedableBean != null) {
                     seedableBean.seed();
                     System.out.println("Successfully seeded: " + className);
+                    seedableBean.rollback();
                 } else {
                     System.err.println("Error: Bean not found for class: " + className);
                 }

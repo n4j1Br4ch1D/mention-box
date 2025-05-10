@@ -4,7 +4,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/mentionbox?currentSchema=myschema2
     username: postgres
-    password: toor
+    password: 2012
     driverClassName: org.postgresql.Driver
   jpa:
     hibernate:
@@ -16,7 +16,7 @@ spring:
         prefix: mine_
   data:
     elasticsearch:
-      cluster-names: AdminSeeder
+      cluster-names: elasticsearch
       cluster-node: localhost:9200
   security:
     basic:
